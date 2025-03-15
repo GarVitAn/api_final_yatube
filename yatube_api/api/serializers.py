@@ -1,15 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers, validators
 from rest_framework.relations import SlugRelatedField
-from posts.models import Comment, Post, Group, Follow
-
-
-class PostSerializer(serializers.ModelSerializer):
-    author = SlugRelatedField(slug_field='username', read_only=True)
-
-    class Meta:
-        fields = '__all__'
-        model = Post
+from posts.models import Comment, Group, Follow, Post
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -21,13 +13,6 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ('post',)
         model = Comment
-
-
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
-        fields = ('id', 'title', 'slug', 'description')
-        read_only_fields = ('id', 'title', 'slug', 'description')
 
 
 class FollowSerializer(serializers.ModelSerializer):
@@ -58,3 +43,19 @@ class FollowSerializer(serializers.ModelSerializer):
                 'Попытка подписаться на себя же'
             )
         return data
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('id', 'title', 'slug', 'description')
+        read_only_fields = ('id', 'title', 'slug', 'description')
+        
+
+class PostSerializer(serializers.ModelSerializer):
+    author = SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        fields = '__all__'
+        model = Post
+        
