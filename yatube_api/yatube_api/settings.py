@@ -8,6 +8,12 @@ SECRET_KEY = 'hhz7l-ltdismtf@bzyz+rple7*s*w$jak%whj@(@u0eok^f9k4'
 
 DEBUG = True
 
+ROOT_URLCONF = 'yatube_api.urls'
+
+TEMPLATES_DIR = BASE_DIR / 'templates'
+
+WSGI_APPLICATION = 'yatube_api.wsgi.application'
+
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -33,10 +39,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'yatube_api.urls'
-
-TEMPLATES_DIR = BASE_DIR / 'templates'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -52,9 +54,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'yatube_api.wsgi.application'
-
 
 DATABASES = {
     'default': {
