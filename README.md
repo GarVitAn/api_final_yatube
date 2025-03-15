@@ -44,3 +44,14 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+
+# Примеры запросов
+```
+GET api/v1/posts/ - получить список всех публикаций.
+При указании параметров limit и offset выдача должна работать с пагинацией
+GET api/v1/posts/{id}/ - получение публикации по id
+GET api/v1/groups/ - получение списка доступных сообществ
+GET api/v1/groups/{id}/ - получение информации о сообществе по id
+GET api/v1/{post_id}/comments/ - получение всех комментариев к публикации
+GET api/v1/{post_id}/comments/{id}/ - Получение комментария к публикации по id
+```
